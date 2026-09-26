@@ -1,3 +1,4 @@
+
 # dsh-fish-widget
 
 一个运行在 DSH 网页界面中的大肥鱼互动挂件。支持八种情态、拖拽吸附、点击互动、自定义素材，以及纯娱乐性质的对话拦截。
@@ -21,15 +22,67 @@
 
 ## 安装
 
-```sh
+本仓库已经包含可直接运行的 `lib/`，且没有需要在安装时执行的 `prepare` 构建脚本，因此可以直接从 GitHub 安装，不需要先发布到 npm，也不需要配置 `allowBuilds`。GitHub Release 的 `.tgz` 只是可选的备用分发方式。
+
+### 安装前准备
+
+DSH 使用 `pnpm` 管理每个 profile 的插件依赖。请打开一个新的 PowerShell，依次检查：
+
+```powershell
+node -v
+npm -v
+pnpm -v
+dsh --version
+```
+
+如果只有 `pnpm` 显示“不是内部或外部命令”，安装 pnpm 10：
+
+```powershell
+npm install -g pnpm@10
+```
+
+安装完成后关闭并重新打开 PowerShell，再运行 `pnpm -v` 确认能显示版本号。如果 `node` 和 `npm` 也不存在，请先安装 Node.js LTS。
+
+### Windows 推荐安装流程
+
+1. 完全退出正在运行的 DSH Host。若终端正在运行 `dsh web`，按 `Ctrl + C` 停止。
+2. 另外打开一个新的 PowerShell。不要在正在运行 `dsh web` 的窗口中输入安装命令；该窗口被服务器进程占用是正常现象。
+3. 运行：
+
+```powershell
 dsh plugin --profile web add github:cyberangal/dsh-fish-widget
 ```
 
-安装完成后刷新 DSH 网页。如果使用的 profile 不是 `web`，请把命令中的 `web` 换成实际 profile 名称。
+4. 安装成功后重新启动 DSH：
 
-本地目录安装：
+```powershell
+dsh web
+```
 
-```sh
+5. 刷新 DSH 网页。如果使用的 profile 不是 `web`，请把命令中的 `web` 换成实际 profile 名称。
+
+### `dsh` 不是命令时
+
+先关闭旧的 CMD/PowerShell，再打开新窗口重试。若 DSH 没有加入系统 PATH，请进入你的 DSH 安装目录，通过 pnpm 调用：
+
+```powershell
+cd D:\你的DSH安装目录
+pnpm exec dsh plugin --profile web add github:cyberangal/dsh-fish-widget
+pnpm exec dsh web
+```
+
+### 常见安装错误
+
+| 提示 | 原因与处理 |
+|---|---|
+| `'pnpm' 不是内部或外部命令` | 运行 `npm install -g pnpm@10`，然后重新打开 PowerShell |
+| `'dsh' 不是内部或外部命令` | 重新打开终端；仍不行就进入 DSH 安装目录使用 `pnpm exec dsh ...` |
+| 运行 `dsh web` 后无法继续输入 | DSH 服务正在前台运行；另开 PowerShell，或按 `Ctrl + C` 停止 |
+| 安装成功但看不到挂件 | 完全重启 DSH Host，并确认安装与启动使用的是同一个 profile |
+
+### 本地目录安装
+
+```powershell
 dsh plugin --profile web add link:/绝对路径/dsh-fish-widget
 ```
 
