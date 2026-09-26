@@ -1,0 +1,37 @@
+{
+  "name": "dsh-fish-widget",
+  "version": "0.1.0",
+  "description": "DSH 大肥鱼互动挂件：八种情态、拖拽吸附、点击互动与整活式对话拦截。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-plugins",
+    "deepseek-harness",
+    "cordis",
+    "widget",
+    "meme"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "files": [
+    "assets",
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyberangal/dsh-fish-widget.git"
+  },
+  "homepage": "https://github.com/cyberangal/dsh-fish-widget#readme",
+  "bugs": {
+    "url": "https://github.com/cyberangal/dsh-fish-widget/issues"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT"
+}

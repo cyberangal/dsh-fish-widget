@@ -1,0 +1,5 @@
+# dsh-fish-widget 的 DSH Web profile 挂载声明。
+
+- insert:
+    - id: dsh-fish-widget
+      name: dsh-fish-widget
